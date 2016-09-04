@@ -1,0 +1,208 @@
+
+@charset "UTF-8";
+
+
+body {
+    background: #fff;
+    font-family: 'Gibson', sans-serif;
+    color: black;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 40px;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {}
+
+::-webkit-scrollbar-track-piece {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    background:transparent url(/images/4scrollwhite.png) no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+    height: 32px;
+}
+
+#styling3dtransition {
+    position: absolute; 
+    top: 50%; 
+    left:50%; 
+    -webkit-perspective: 3000px; 
+    -moz-perspective: 30000px; 
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+#basiclevel {
+    background: transparent;
+/*    position: fixed;*/
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+#backplane {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    position: absolute;
+    -webkit-transform: translateZ(-100px);
+    -moz-transform: translateZ(-100px);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+#backplanebackground {
+    height: 100%;
+    width: 100%;
+    background: url(/images/def1.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+
+.back_layer.layer1{
+    background: url(/images/scene2/4.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    -webkit-transform: translateZ(0px);
+    -moz-transform: translateZ(0px);
+}
+.back_layer.layer2{
+    background: url(/images/scene2/3.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    -webkit-transform: translateZ(20px);
+    -moz-transform: translateZ(20px);
+}
+.back_layer.layer3{
+    background: url(/images/scene2/2.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    -webkit-transform: translateZ(40px);
+    -moz-transform: translateZ(40px);
+}
+.back_layer.layer4{
+    background: url(/images/scene2/1.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    -webkit-transform: translateZ(60px);
+    -moz-transform: translateZ(60px);
+}
+
+.back_layer{
+    height: 100%;
+    width: 100%;
+/*    background: url(/images/def1.png) no-repeat;*/
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+   
+/*
+        #backplanebackground.animated {
+            -webkit-animation: filter-animation 625s infinite;
+        }
+        
+        @-webkit-keyframes filter-animation {
+            0% {
+                -webkit-filter: blur(3px) brightness(1) saturate(1) hue-rotate(0deg) grayscale(0) opacity(1);
+            }
+        }
+            100% {
+            -webkit-filter: blur(3px) brightness(1) saturate(1) hue-rotate(0deg) grayscale(0) opacity(1);
+          }
+        }
+*/
+        
+        
+        #wrapperbody {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: transparent;
+            overflow-y: scroll;
+            pointer-events: all;
+        }
+        
+        #wrapper {
+            max-width: 30%;
+            position: absolute;
+            right: 20%;
+            top: 0px;
+            background: transparent;
+        }
+        
+        
+        
+        
+        
+    canvas {
+       display: block;
+       vertical-align: bottom;
+   }
+   /* ---- particles.js container ---- */
+   
+   #particles-js {
+       position: absolute;
+       width: 100%;
+       height: 100%;
+/*       background-color: #b61924;*/
+       background-image: url("");
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-position: 50% 50%;
+   }
+   /* ---- stats.js ---- */
+   
+   .count-particles {
+       background: #000022;
+       position: absolute;
+       top: 48px;
+       left: 0;
+       width: 80px;
+       color: #13E8E9;
+       font-size: .8em;
+       text-align: left;
+       text-indent: 4px;
+       line-height: 14px;
+       padding-bottom: 2px;
+       font-family: Helvetica, Arial, sans-serif;
+       font-weight: bold;
+   }
+   
+   .js-count-particles {
+       font-size: 1.1em;
+   }
+   
+   #stats,
+   .count-particles {
+       -webkit-user-select: none;
+       margin-top: 5px;
+       margin-left: 5px;
+   }
+   
+   #stats {
+       border-radius: 3px 3px 0 0;
+       overflow: hidden;
+   }
+   
+   .count-particles {
+       border-radius: 0 0 3px 3px;
+   }

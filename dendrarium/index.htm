@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    <title>ДЕНДРАРИУМ</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+    <script type="text/javascript" src="http://static.tumblr.com/trbwpg0/tPcnxph0m/velocity.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="script.js"></script>
+    
+    <script src="scripts/particles.js"></script>
+
+</head>
+
+<body>
+    <div id="styling3dtransition">
+
+
+
+        <div id="basiclevel">
+                   
+<!--working SK solution-->
+<!--                    <iframe width="100%" height="20" scrolling="yes" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/279835949&amp;color=ff5500&amp;auto_play=true&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false;enable_api=true"></iframe>-->
+           
+            <script type="text/javascript">
+                $windowheight = $(window).height();
+                $windowwidth = $(window).width();
+                
+                $basicwidth = $windowwidth * 0.7;
+                $("#basiclevel").css("width", $basicwidth);
+                $basicheight = $basicwidth * 0.563;
+                $("#basiclevel").css("height", $basicheight);
+                
+                $("#styling3dtransition").css("margin-top", $basicheight / -2);
+                $("#styling3dtransition").css("margin-left", $basicwidth / -2);
+
+            </script>
+
+            <div id="backplane">
+<!--                <div id="backplanebackground"></div>-->
+                
+                <div class="back_layer layer1"></div>
+                <div class="back_layer layer2"></div>
+                <div class="back_layer layer3"></div>
+                <div class="back_layer layer4"></div>
+                
+                <div id="particles-js"></div>
+                
+
+<!--
+        樹
+        木
+        園
+-->
+<!--
+        Д
+        Е
+        Н
+        Д
+        Р
+        А
+        Р
+        И
+        У
+        М
+-->
+
+
+                <script type="text/javascript">
+                    $windowheight = $(window).height();
+                    $windowwidth = $(window).width();
+                    $leftside = true;
+                    if ($windowheight < 661 || $windowwidth < 1191) {
+                        $("#postoptions").hide();
+                        $("#logobottom").hide();
+                        $("#minimaloptions").show();
+                        $leftside = false;
+                    }
+                    if ($windowheight > 661 && $windowwidth > 1191) {
+                        $("#postoptions").show();
+                        $("#logobottom").show();
+                        $("#minimaloptions").hide();
+                        $leftside = true;
+                    }
+                </script>
+
+            </div>
+
+            <div id="wrapperbody">
+
+
+
+                <div id="wrapper">
+
+                        <div id="post">
+                     
+
+                           <img class="photoimage" src="/images/11.png" style="width: 100%;" alt="photo1" onMouseOver="newBackground('/images/11.jpg')" />
+                            <img src="/images/transpadding.png" style="width: 100%; pointer-events: none;" />
+                        
+                          <img class="photoimage" src="/images/22.png" style="width: 100%;" alt="photo1" onMouseOver="newBackground('/images/22.jpg')" />
+                            <img src="/images/transpadding.png" style="width: 100%; pointer-events: none;" />
+                            
+                            <img class="photoimage" src="/images/33.png" style="width: 100%;" alt="photo1" onMouseOver="newBackground('/images/33.jpg')" />
+                            <img src="/images/transpadding.png" style="width: 100%; pointer-events: none;" />
+                            
+                            <img class="photoimage" src="/images/44.png" style="width: 100%;" alt="photo1" onMouseOver="newBackground('/images/44.jpg')" />
+                            <img src="/images/transpadding.png" style="width: 100%; pointer-events: none;" />
+                           
+<!--
+                            <div class="photospace">
+                                <a class="fancybox" href="{PhotoURL-HighRes}"><img class="photoimage" src="{PhotoUrl-HighRes}" style="width: 100%;" alt="{PhotoAlt}" onMouseOver="newBackground('{PhotoURL-HighRes}',10000,'{Permalink}','{ReblogURL}',{JSCaption},'{PortraitURL-48}','',{JSTitle},'','','','','',{JSPostID},0)" /></a>
+                                <img src="http://static.tumblr.com/trbwpg0/O6Dnxtkqz/transpadding.png" style="width: 100%; pointer-events: none;" />
+                            </div>
+-->
+                            
+<!--
+                            {block:PermalinkPage}
+                            <script>
+                                $('#backplanebackground').css('background-image', 'url(' + String({
+                                    JSPhotoURL - HighRes
+                                }) + ')');
+                            </script>
+                            <a href="{PhotoURL-HighRes}"><img src="{PhotoUrl-HighRes}" style="width: 100%;" alt="{PhotoAlt}" /></a>
+
+                            {/block:PermalinkPage} {/block:Photo} 
+-->
+               
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
