@@ -27,7 +27,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-    background:transparent url(/images/4scrollwhite.png) no-repeat;
+    background:transparent url(./images/4scrollwhite.png) no-repeat;
     background-size: 30px 30px;
     background-position: center;
     height: 32px;
@@ -64,7 +64,7 @@ body {
 #backplanebackground {
     height: 100%;
     width: 100%;
-    background: url(/images/def1.png) no-repeat;
+    background: url(./images/def1.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -74,7 +74,7 @@ body {
 }
 
 .back_layer.layer1{
-    background: url(/images/scene2/4.png) no-repeat;
+    background: url(./images/scene2/4.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -82,7 +82,7 @@ body {
     -moz-transform: translateZ(0px);
 }
 .back_layer.layer2{
-    background: url(/images/scene2/3.png) no-repeat;
+    background: url(./images/scene2/3.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -90,7 +90,7 @@ body {
     -moz-transform: translateZ(20px);
 }
 .back_layer.layer3{
-    background: url(/images/scene2/2.png) no-repeat;
+    background: url(./images/scene2/2.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -98,7 +98,7 @@ body {
     -moz-transform: translateZ(40px);
 }
 .back_layer.layer4{
-    background: url(/images/scene2/1.png) no-repeat;
+    background: url(./images/scene2/1.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
