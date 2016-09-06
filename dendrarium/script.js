@@ -1,5 +1,24 @@
-        function newBackground(bcgrnd) {         
-                $('#backplanebackground').css('background-image', 'url(' + String(bcgrnd) + ')');
+        function newBackground(num_card) {    
+            $('.back_layer').addClass("movedown");
+            
+//            setTimeout(function(){ 
+//                $('.back_layer').addClass("imagechange");
+//            }, 1500);
+            
+            setTimeout(function(){ 
+                $('.back_layer.layer4').css('background-image', 'url(./images/scene' + num_card + '/4.png)');
+                $('.back_layer.layer3').css('background-image', 'url(./images/scene' + num_card + '/3.png)');
+                $('.back_layer.layer2').css('background-image', 'url(./images/scene' + num_card + '/2.png)');
+                $('.back_layer.layer1').css('background-image', 'url(./images/scene' + num_card + '/1.png)');
+            }, 1000);
+//            setTimeout(function(){ 
+//                $('#backplane').removeClass("imagechangeblur");
+//            }, 2350);
+            setTimeout(function(){ 
+            $('.back_layer').removeClass("movedown");
+            $('.back_layer').removeClass("imagechange");
+//            }, 4500);
+            }, 2000);
         }
 
 

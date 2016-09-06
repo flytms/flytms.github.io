@@ -59,7 +59,18 @@ body {
     -moz-transform: translateZ(-100px);
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    
+/*
+    -webkit-filter: blur(0px);
+    transition: 850ms;
+*/
+
 }
+/*
+#backplane.imagechangeblur {
+    -webkit-filter: blur(3px);
+}
+*/
 
 #backplanebackground {
     height: 100%;
@@ -73,37 +84,77 @@ body {
     transition: 1s;
 }
 
-.back_layer.layer1{
-    background: url(./images/scene2/4.png) no-repeat;
+.back_layer.layer4{
+    background: url(./images/scene1/4.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
     -webkit-transform: translateZ(0px);
     -moz-transform: translateZ(0px);
+    
+    transition: 
+                background-image 1500ms ease;
+    
+    
 }
-.back_layer.layer2{
-    background: url(./images/scene2/3.png) no-repeat;
+
+.back_layer.layer3{
+    background: url(./images/scene1/3.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
     -webkit-transform: translateZ(20px);
     -moz-transform: translateZ(20px);
+    
+    transition-delay: 0ms;  
+    transition: -moz-transform 1500ms ease, 
+                -webkit-transform 1500ms ease,
+                background-image 1500ms ease;
 }
-.back_layer.layer3{
-    background: url(./images/scene2/2.png) no-repeat;
+.back_layer.layer3.movedown{
+    -webkit-transform: translateZ(-20px);
+    -moz-transform: translateZ(0px);
+/*    transition-delay: 1000ms;*/
+}
+.back_layer.layer3.imagechange {
+    transition-delay: 0ms;
+}
+.back_layer.layer2{
+    background: url(./images/scene1/2.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
     -webkit-transform: translateZ(40px);
     -moz-transform: translateZ(40px);
+    
+    transition-delay: 0ms;
+    transition: -moz-transform 1500ms ease, 
+                -webkit-transform 1500ms ease,
+                background-image 1500ms ease;
 }
-.back_layer.layer4{
-    background: url(./images/scene2/1.png) no-repeat;
+.back_layer.layer2.movedown{
+    -webkit-transform: translateZ(-40px);
+    -moz-transform: translateZ(0px);
+/*    transition-delay: 500ms;*/
+}
+.back_layer.layer2.imagechange {
+    transition-delay: 0ms;
+}
+.back_layer.layer1{
+    background: url(./images/scene1/1.png) no-repeat;
     background-size: cover;
     background-position: center;
     position: absolute;
     -webkit-transform: translateZ(60px);
     -moz-transform: translateZ(60px);
+    
+    transition: -moz-transform 1500ms ease, 
+                -webkit-transform 1500ms ease,
+                background-image 1500ms ease;
+}
+.back_layer.layer1.movedown{
+    -webkit-transform: translateZ(-60px);
+    -moz-transform: translateZ(0px);
 }
 
 .back_layer{
@@ -112,7 +163,19 @@ body {
 /*    background: url(/images/def1.png) no-repeat;*/
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    transition: 1s;
+/*    transition: 5s;*/
+/*    -webkit-filter: blur(0px);*/
+}
+.back_layer.imagechange {
+    transition-delay: 0ms;
+}
+
+.cardimage {
+    width: 100%;
+}
+.emptycardspase {
+    width: 100%; 
+    pointer-events: none;
 }
    
 /*
