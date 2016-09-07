@@ -6,6 +6,7 @@ function newBackground(num_card) {
         $changeinprogress = 1;
         $current_card = num_card;
         $('.back_layer').addClass("movedown");
+        $('#particles-js').addClass("onimagechange");
         setTimeout(function(){ 
             $('.back_layer.layer1').css('-webkit-filter','blur(3px)');
             $('.back_layer.layer2').css('-webkit-filter','blur(3px)');
@@ -38,7 +39,9 @@ function newBackground(num_card) {
             $('.back_layer').removeClass("movedown");
             $('.back_layer').css('-webkit-filter','');
         }, 2100);
-        
+        setTimeout(function(){ 
+            $('#particles-js').removeClass("onimagechange");
+        },4000);
         setTimeout(function(){ 
             $changeinprogress = 0;
         },4200);

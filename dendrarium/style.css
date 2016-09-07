@@ -239,22 +239,22 @@ body {
 */
         
         
-        #wrapperbody {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background: transparent;
-            overflow-y: scroll;
-            pointer-events: all;
-        }
-        
-        #wrapper {
-            max-width: 30%;
-            position: absolute;
-            right: 20%;
-            top: 0px;
-            background: transparent;
-        }
+#wrapperbody {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    overflow-y: scroll;
+    pointer-events: all;
+}
+
+#wrapper {
+    max-width: 30%;
+    position: absolute;
+    right: 20%;
+    top: 0px;
+    background: transparent;
+}
         
         
         
@@ -268,17 +268,21 @@ body {
 */
    /* ---- particles.js container ---- */
    
-   #particles-js {
-        position: absolute;
-        height: 120%;
-        width: 120%;
-        top:-10%;
-        left:-10%;
+#particles-js {
+    position: absolute;
+    height: 120%;
+    width: 120%;
+    top:-10%;
+    left:-10%;
 /*       background: black;*/
-/*       opacity: 0.5;*/
-        -webkit-filter: blur(1px);
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        -webkit-transform: translateZ(30px);
-        -moz-transform: translateZ(30px);
-   }
+   opacity: 1;
+    -webkit-filter: blur(1px);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(30px);
+    -moz-transform: translateZ(30px);
+    transition: opacity 200ms ease;
+}
+#particles-js.onimagechange {
+    opacity: 0;
+}
