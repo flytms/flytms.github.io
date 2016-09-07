@@ -281,7 +281,7 @@ body {
     transform-style: preserve-3d;
     -webkit-transform: translateZ(30px);
     -moz-transform: translateZ(30px);
-    transition: opacity 200ms ease;
+    transition: opacity 1000ms ease;
 }
 #particles-js.onimagechange {
     opacity: 0;
