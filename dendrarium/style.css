@@ -15,6 +15,7 @@ body {
 
 
 
+/*
 ::-webkit-scrollbar {
     width: 40px;
 }
@@ -32,6 +33,7 @@ body {
     background-position: center;
     height: 32px;
 }
+*/
 
 #styling3dtransition {
     position: absolute; 
@@ -199,9 +201,28 @@ body {
 */
 }
 
-
+.card {
+    width: 100%;
+    position: relative;
+}
 .cardimage {
     width: 100%;
+}
+.selectarrow {
+    position: absolute;
+    width: 30%;
+    height: auto;
+    right:-97%;
+    top: 50%;
+	transform: translateY(-50%);
+}
+.card_top .selectarrow  {
+    opacity: 1;
+}
+.card_bottom .selectarrow {
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+    opacity: 0;
 }
 .emptycardspase {
     width: 100%; 
@@ -227,25 +248,132 @@ body {
         
 #wrapperbody {
     position: absolute;
-    height: 120%;
-    width: 100%;
-    top:-10%;
+    height: 150%;
+    width: 200%;
+    top:-25%;
     background: transparent;
     overflow-y: scroll;
+    overflow-x: hidden;
     pointer-events: all;
+    
+/*    opacity: 0;*/
+/*    -webkit-filter: invert(100%);*/
+    
 }
 
-#wrapper {
-    max-width: 30%;
+.wrapper {
+    max-width: 14.3%;
+/*    max-width: 50.3%;*/
     position: absolute;
-    right: 20%;
+/*    right: 17%;*/
+    left:23.5%;
     top: 0px;
     background: transparent;
+    padding-left: 20px;
+}
+
+#wrapperbody2 {
+    position: absolute;
+    height: 150%;
+    width: 200%;
+    top:-25%;
+    background: transparent;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    pointer-events: none;
+    
+/*    opacity: 0;*/
+/*    -webkit-filter: invert(100%);*/
+    
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(-4px);
+    -moz-transform: translateZ(-4px);
+}
+#wrapper2 {
+    max-width: 15%;
+    position: absolute;
+/*    right: 17%;*/
+    left:26%;
+    top: 0px;
+    background: transparent;
+    padding-left: 20px;
 }
         
-        
-        
-        
+#fade-clud-up {
+    position: absolute;
+    height: 200%;
+    width: 200%;
+    top:-217%;
+    left:-50%;
+    background: white;
+    -webkit-box-shadow: 0px 28px 40px 0px white;
+    -moz-box-shadow: 0px 28px 40px 0px white;
+    box-shadow: 0px 28px 40px 0px white;
+}    
+
+#fade-clud-down {
+    position: absolute;
+    height: 200%;
+    width: 200%;
+    bottom:-217%;
+    left:-50%;
+    background: white;
+    -webkit-box-shadow: 0px -28px 40px 0px white;
+    -moz-box-shadow: 0px -28px 40px 0px white;
+    box-shadow: 0px -28px 40px 0px white;
+}  
+   
+.out-dend-txt-hidescroll {
+    position: absolute;
+    height:130%;
+    width:40%;
+    top:-15%;
+    left:-26%;
+    padding-left: 20px;
+    overflow: hidden;
+}
+.dendrarium-txt {
+    position: absolute;
+    height:100%;
+    width:30%;
+/*    top:0;*/
+    left:75%;
+    font-family: 'bastarda-kregular';
+    font-size: 47px;
+    line-height: 77px;
+    word-wrap: break-word;
+    letter-spacing: 30px; 
+    color: white;
+    text-align: center;
+    
+    overflow-y: scroll;
+/*    overflow-x: hidden;*/
+    pointer-events: none;
+}  
+
+.out-dend-txt-hidescroll.top-txt {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(-48px);
+    -moz-transform: translateZ(-48px);
+    
+    opacity: 0.6;
+}
+
+.out-dend-txt-hidescroll.bottom-txt {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(-52px);
+    -moz-transform: translateZ(-52px); 
+    
+/*    opacity: 0;*/
+}
+
+.out-dend-txt-hidescroll.bottom-txt .dendrarium-txt {
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+}
         
 /*
     canvas {
