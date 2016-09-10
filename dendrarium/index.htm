@@ -3,6 +3,9 @@
 <head>
     <title>ДЕНДРАРИУМ</title>
 
+
+   <meta name="google" value="notranslate">
+   
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 
@@ -10,12 +13,14 @@
     
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./fonts/bastarda-k-webfont/bastarda-k-webfont-stylesheet.css" type="text/css" charset="utf-8" />
+    <script type="text/javascript" src="./scripts/iscroll-probe.js"></script>
     <script type="text/javascript" src="./scripts/script.js"></script>
     
 
 </head>
 
 <body>
+   
     <div id="styling3dtransition">
 
 
@@ -101,29 +106,31 @@
 
             </div>
         <div class="out-dend-txt-hidescroll top-txt">
-            <div class="dendrarium-txt sub-scroll-container">DENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUM</div>
+            <div class="dendrarium-txt dend_top"><span>DENDRARIUMDENDRARIUMDENDRARIUM</span></div>
         </div>
         <div class="out-dend-txt-hidescroll bottom-txt">
-            <div class="dendrarium-txt sub-scroll-container">DENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUM</div>
+            <div class="dendrarium-txt dend_bottom"><span>DENDRARIUMDENDRARIUMDENDRARIUM</span></div>
         </div>
+        
 
         <div id="wrapperbody2" class="sub-scroll-container">
             <div class="wrapper">
                      
                 <img class="emptycardspase"
                 src="./images/transpadding.png"/>
-                <div id="card1" class="card card_bottom">
+                <div class="card1 card card_bottom">
                     <img class="cardimage" src="./images/scene1/halftonedragon1.png" />
-                    <img class="selectarrow arrow_top" src="./images/arrows/select_arrow_white.svg"/>
-                    <img class="selectarrow arrow_bottom" src="./images/arrows/select_arrow_white.svg"/>
                 </div>
                 <img class="emptycardspase"
                 src="./images/transpadding.png"/>
 
-                <div id="card2" class="card card_bottom">
+                <div class="card2 card card_bottom">
                     <img class="cardimage" src="./images/scene1/halftonedragon1.png"  />
-                    <img class="selectarrow arrow_top" src="./images/arrows/select_arrow_white.svg"/>
-                    <img class="selectarrow arrow_bottom" src="./images/arrows/select_arrow_white.svg"/>
+                </div>
+                <img class="emptycardspase" src="./images/transpadding.png"/>
+                
+                <div class="card3 card card_bottom">
+                    <img class="cardimage" src="./images/scene1/halftonedragon1.png"  />
                 </div>
                 <img class="emptycardspase" src="./images/transpadding.png"/>
 
@@ -137,7 +144,7 @@
                      
                 <img class="emptycardspase"
                 src="./images/transpadding.png"/>
-                <div id="card1" class="card card_top">
+                <div class="card1 card card_top">
                     <img class="cardimage" src="./images/scene1/halftonedragon2.png" onMouseOver="newBackground(1)" />
                     <img class="selectarrow arrow_top" src="./images/arrows/select_arrow_white.svg"/>
                     <img class="selectarrow arrow_bottom" src="./images/arrows/select_arrow_white.svg"/>
@@ -145,8 +152,15 @@
                 <img class="emptycardspase"
                 src="./images/transpadding.png"/>
 
-                <div id="card2" class="card card_top">
+                <div class="card2 card card_top">
                     <img class="cardimage" src="./images/scene1/halftonedragon2.png" onMouseOver="newBackground(2)" />
+                    <img class="selectarrow arrow_top" src="./images/arrows/select_arrow_white.svg"/>
+                    <img class="selectarrow arrow_bottom" src="./images/arrows/select_arrow_white.svg"/>
+                </div>
+                <img class="emptycardspase" src="./images/transpadding.png"/>
+                          
+                <div class="card3 card card_top">
+                    <img class="cardimage" src="./images/scene1/halftonedragon2.png" onMouseOver="newBackground(1)" />
                     <img class="selectarrow arrow_top" src="./images/arrows/select_arrow_white.svg"/>
                     <img class="selectarrow arrow_bottom" src="./images/arrows/select_arrow_white.svg"/>
                 </div>
@@ -274,6 +288,11 @@
             
         </div>
     </div>
+
+<div id="log"></div>
+<div id="log2"></div>
+<div id="log3"></div>
+<div id="log4"></div>
 
 </body>
 
