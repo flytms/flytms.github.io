@@ -73,6 +73,28 @@ $(document).ready(function () {
     });
 
    
+
+//    var myScroll;
+//    myScroll = new IScroll('#wrapperbody', {
+//        mouseWheel: true,
+//        scrollbars: false,
+//        keyBindings: true,
+//        probeType: 3,
+//        snap: true,
+//        
+//    });
+
+    
+     //var subCatContainer = $(".scroll-container");
+    
+//    myScroll.on('scroll', function() {
+//        $(".sub-scroll-container").scrollTop(- myScroll.y);
+//        
+//        $scrollchange = $scrollbefore - myScroll.y;
+//        $scrollbefore = myScroll.y;
+//        $("#log2").html("iscroll : <b>" + $scrollchange + "</b> px");
+//        
+//    });
     
     $scrollbefore = 0;
     $overallscroll = 0;
@@ -95,11 +117,16 @@ $d_pos = $(".dendrarium-txt").scrollTop();
 $default_d_speed = 1;
 $max_d_speed = 36;
 $d_speed = $default_d_speed;
+//$easing_d_boud = $default_d_speed * 5;
 function repeatOften() {
     if ($d_speed > $max_d_speed) {
         $d_speed = $max_d_speed;
     }
     if ($d_speed < $default_d_speed) {
+//        $d_in_bound = Math.abs($default_d_speed) - Math.abs($d_speed);
+//        if ($d_in_bound < $easing_d_boud) {
+//            
+//        } 
         $d_speed += 0.09;
         if ($d_speed > $default_d_speed) {
             $d_speed = $default_d_speed;
@@ -128,6 +155,7 @@ setInterval(function(){
 function log(txt) {
   $("#log").html("location : <b>" + txt + "</b> px")
 }
+
 $(function() {
       var eTop = $('.card3').offset().top; //get the offset top of the element
       log(eTop - $("#wrapperbody").scrollTop()); //position of the ele w.r.t window
