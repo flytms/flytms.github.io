@@ -8,7 +8,8 @@
    
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript" src="./scripts/jquery.scrollTo.js"></script>
-
+    <script type="text/javascript" src="scripts/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.idle.js"></script>
     
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./fonts/bastarda-k-webfont/bastarda-k-webfont-stylesheet.css" type="text/css" charset="utf-8" />
@@ -20,6 +21,12 @@
 
 <body>
    
+    <div id="loadwheel">
+        <img src="./images/load_wheel.jpg"/>
+    </div>
+    
+    <a href="http://www.ofluxo.net/"><img style="position: fixed; top: 16px; left: 10px; width: 80px; height: 87px; z-index: 500000000000000000;" src="./images/ofluxo_lnkWhite.png" alt=""></a>
+    
     <div id="styling3dtransition">
 
         <div id="basiclevel">
@@ -84,23 +91,22 @@
 
         <div id="wrapperbody2" class="sub-scroll-container">
             <div class="wrapper">
-                <div class="description">Fluxograma#XX: ‘ДЕНДРАРИУМ 樹木園’ Mix: LORD Ø x HERBARIUM ; Art: Ignat B. ; Download mix. O Fluxo, September, 2016.</div>
+                <div class="description"><span>Fluxograma#XX: ‘ДЕНДРАРИУМ 樹木園’ Mix: LORD Ø x HERBARIUM ; Art: Ignat B. ; Download mix. O Fluxo, September, 2016.</span></div>
                      
                 <div class="card1 card card_bottom">
                     <img class="cardimage" src="./images/scene1/halftonedragon1.png" />
                 </div>
-                <img class="emptycardspase"
-                src="./images/transpadding.png"/>
+                <div class="emptycardspase"></div>
 
                 <div class="card2 card card_bottom">
                     <img class="cardimage" src="./images/scene1/halftonedragon1.png"  />
                 </div>
-                <img class="emptycardspase" src="./images/transpadding.png"/>
+                <div class="emptycardspase"></div>
                 
                 <div class="card3 card card_bottom">
                     <img class="cardimage" src="./images/scene1/halftonedragon1.png"  />
                 </div>
-                <img class="emptycardspase" src="./images/transpadding.png"/>
+                <div class="emptycardspase"></div>
 
            
             </div>
@@ -109,29 +115,35 @@
            
         <div id="wrapperbody" class="scroll-container">
             <div class="wrapper">
-                <div class="description">Fluxograma#XX: ‘ДЕНДРАРИУМ 樹木園’ Mix: LORD Ø x HERBARIUM ; Art: Ignat B. ; Download mix. O Fluxo, September, 2016.</div>
+               
+<!--                <div id="playarrow">-->
+<!--                </div>-->
+                <div class="description"><span>Fluxograma#XX: ‘ДЕНДРАРИУМ 樹木園’ Mix: LORD Ø x HERBARIUM ; Art: Ignat B. ; Download mix. O Fluxo, September, 2016.</span></div>
                 
                 <div class="card1 card card_top">
                     <img class="cardimage" src="./images/scene1/halftonedragon2.png" onMouseOver="newBackground(1)" />
                     <img class="selectarrow arrow_top" src="./images/arrows/select_arrow_white.svg"/>
                     <img class="selectarrow arrow_bottom" src="./images/arrows/select_arrow_white.svg"/>
+                    
+                    <img id="playarrow" src="./images/arrows/play_arrow_white.svg"/>
+
+                    
                 </div>
-                <img class="emptycardspase"
-                src="./images/transpadding.png"/>
+                <div class="emptycardspase"></div>
 
                 <div class="card2 card card_top">
                     <img class="cardimage" src="./images/scene1/halftonedragon2.png" onMouseOver="newBackground(2)" />
                     <img class="selectarrow arrow_top" src="./images/arrows/select_arrow_white.svg"/>
                     <img class="selectarrow arrow_bottom" src="./images/arrows/select_arrow_white.svg"/>
                 </div>
-                <img class="emptycardspase" src="./images/transpadding.png"/>
+                <div class="emptycardspase"></div>
                           
                 <div class="card3 card card_top">
                     <img class="cardimage" src="./images/scene1/halftonedragon2.png" onMouseOver="newBackground(3)" />
                     <img class="selectarrow arrow_top" src="./images/arrows/select_arrow_white.svg"/>
                     <img class="selectarrow arrow_bottom" src="./images/arrows/select_arrow_white.svg"/>
                 </div>
-                <img class="emptycardspase" src="./images/transpadding.png"/>
+                <div class="emptycardspase"></div>
                            
 <!--                           -->
 <!--
@@ -259,14 +271,15 @@
 
 <!--working SK solution-->
 <div id="skplayer">
-<iframe width="100%" height="20" scrolling="yes" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/282453115&amp;color=FFFFFF&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false;enable_api=true"></iframe>
+<iframe width="100%" height="20" scrolling="yes" frameborder="yes" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/282551017&amp;color=FFFFFF&amp;auto_play=true&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false;enable_api=true"></iframe>
 
 <script src="./scripts/api.js"></script>
-
-<!--<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/282334486&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>-->
+<!--00:34// https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/282350483-->
+<!--48:34// https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/282453115-->
+<!--02:03// https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/282551017-->
 </div>
 
-<a href="http://www.ofluxo.net/"><img style="position: fixed; top: 16px; left: 10px; width: 80px; height: 87px; z-index: 500000000000000000;" src="./images/ofluxo_lnkWhite.png" alt=""></a>
+
 
 <div class="db">Fluxograma#XX: ‘ДЕНДРАРИУМ 樹木園’ Mix: LORD Ø x HERBARIUM ; Art: Ignat B. ; Download mix. O Fluxo, September, 2016.</div>
 
@@ -277,10 +290,15 @@ This is an email link:
 <a href="mailto:someone@example.com?Subject=Hello%20again" target="_top">Send Mail</a>
 -->
 
+<!--
 <div id="log"></div>
 <div id="log2"></div>
 <div id="log3"></div>
 <div id="log4"></div>
+-->
+
+
+
 
 </body>
 
