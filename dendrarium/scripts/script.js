@@ -11,17 +11,19 @@ function newBackground(num_card) {
         if (num_card == 0) {
             $('#wrapperbody').css('opacity','1');
             $('#wrapperbody2').css('opacity','1');
-            $("#loadwheel").fadeOut(1000, function() { $("#loadwheel").remove(); });
+            $("#loadwheel").fadeOut(1200, function() { $("#loadwheel").remove(); });
         }
         
         if (num_card > 0) {
             wrH = $wrapper_height;
             cH = $card_height;
-            cP = $(".card"+num_card).position().top;
+            cP = $scrollidlefix_height + ($card_height + $empty_height)*(num_card - 1);
             sT = $('#wrapperbody').scrollTop();
             bH = $("#basiclevel").height();
+            NN = $scrollidlefix_height;
+            eH = $empty_height;
 
-                if ( (cP < (sT + (wrH - bH)/2 - cH +(cH/4)) ) || (cP > (sT + wrH - (wrH - bH)/2 -(cH/4)) ) ) {
+                if ( (cP < (sT + (wrH - bH)/2 - cH +(cH/6)) ) || (cP > (sT + wrH - (wrH - bH)/2 -(cH/6)) ) ) {
                     $changeinprogress = 0;
                     return;
                 }        
@@ -126,6 +128,11 @@ function newBackground(num_card) {
                     $('.card'+$current_card+'.card_top .cardimage').addClass("faded");
                     $('.card'+$current_card+'.card_top .cardimage').css('margin-left','300%');
                 }
+                if ($finish && $finish_touch){
+                    $('.card'+$current_card+'.card_top .cardimage').addClass("faded");
+                    $('.card'+$current_card+'.card_top .cardimage').css('margin-left','300%');
+                    $finish_touch = false;
+                }
                 $changeinprogress = 0;
             },4200);
         },1350);
@@ -137,9 +144,9 @@ function newBackground(num_card) {
 
 var myTracks = [
     {starttime: 0, position: 0 }, // first track
-//    {starttime: 21951, position: 0 },
+    {starttime: 21951, position: 0 },
     {starttime: 90312, position: 0 }, //last track
-    {starttime: 123491, position: 0 } //end
+    {starttime: 0, position: 0 } //end
 ];
 
 //values 4 dendrarium scroller
@@ -164,17 +171,29 @@ $no_rewind = true;
 $firstplay = true;
 $idle = false;
 $scrollidlefix_height = 0;
+$finish = false;
+$finish_touch = true;
+$idle_timeout_fade = 0;
+
+$idle_move_x = 0;
+$idle_move_y = 0;
+$idle_move_x_step = 0;
+$idle_move_y_step = 0;
+$speed_percent = 0;
+$idle_start8 = false;
+$ccx = 0;
+$ccy = 0;
+$idle_degree = 0;
+$idle_degree_circle = 0;
 
 var currentMousePos = { x: -1, y: -1 };
 $(document).ready(function () {
     
-    speed_percent = $('#basiclevel').height() / 533;
-    if (speed_percent > 1){
-        $default_d_speed = 1 * speed_percent;
-        $default_d_speed_save = $default_d_speed;
-        $max_d_speed = 36 * speed_percent;
-        $d_breaks = 0.09 * speed_percent;
-    }
+    $speed_percent = $('#basiclevel').height() / 533;
+    $default_d_speed = 1 * $speed_percent;
+    $default_d_speed_save = $default_d_speed;
+    $max_d_speed = 36 * $speed_percent;
+    $d_breaks = 0.09 * $speed_percent;
     
     $empty_height = $("#wrapperbody").width() * 0.3;
     $(".emptycardspase").css("height",$empty_height);
@@ -186,7 +205,9 @@ $(document).ready(function () {
     $scrollidlefix_height = $(".description").height() + parseInt($(".description").css("padding-top")) + parseInt($(".description").css("padding-bottom"));
     
         /////
-    $("#log3").append("description height : <b>" + $scrollidlefix_height + "</b> px ");
+//    setTimeout(function(){ 
+//    $("#log3").append(" $card_height  : <b>" +  $card_height + "</b> px  $(.card1.card.card_bottom).height() : <b>" + $('.card1.card.card_bottom').height() + "</b> px");
+//    },2000);
 //    $("#log3").append("$empty_height : <b>" + $empty_height + "</b> px ");
 //    $("#log3").append("$card_height : <b>" + $card_height + "</b> px ");
 //    $("#log3").append(".card1.card.card_bot : <b>" + $('.card1.card.card_bottom').height() + "</b> px ");
@@ -226,9 +247,11 @@ $(document).ready(function () {
                     $firstplay = false;
                 });
             }
+            $finish = false;
+            $finish_touch = true;
             $("#playarrow").css("opacity","1");
             $default_d_speed = $default_d_speed_save;
-            $("#log4").append("SCplayer : <b> PLAY </b> px $mix_time ON PLAY : <b>" + myTracks[myTracks.length - 1].starttime + "</b> ms ");
+//            $("#log4").append("SCplayer : <b> PLAY </b> px $mix_time ON PLAY : <b>" + myTracks[myTracks.length - 1].starttime + "</b> ms ");
         });
     });
     
@@ -236,11 +259,12 @@ $(document).ready(function () {
     widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
         widget.getPosition(function(pos) {
 //            $("#log2").html("SCplayer position: <b>"+ position +"</b> ms");
+            $("#log").html("$no_rewind  : <b>" + $no_rewind  + "</b>");
             if(!$firstplay){
                 if (myTracks[$current_track].starttime < pos && myTracks[$current_track+1].starttime > pos && !$window_resized){
                     arrow_pos_old = $arrow_pos;
                     $arrow_pos = myTracks[$current_track].position + $arrow_step * (pos - myTracks[$current_track].starttime);
-                    if ($arrow_pos - arrow_pos_old > 100) {
+                    if ($arrow_pos - arrow_pos_old > 1000) {
                         $no_rewind = false;
                     }
                 } else {
@@ -248,14 +272,15 @@ $(document).ready(function () {
                     while (i >= 0 && pos < myTracks[i].starttime) {
                         i = i - 1;
                     }
-                    $("#log2").html("i: <b>"+ i +"</b> ms");
+//                    $("#log2").html("i: <b>"+ i +"</b> ms");
                     percent_new_track_left = (myTracks[i+1].starttime - pos)/(myTracks[i+1].starttime - myTracks[i].starttime);
                     $arrow_pos = myTracks[i].position + (myTracks[i+1].position - myTracks[i].position)*percent_new_track_left;
                     $arrow_step = ((myTracks[i+1].position - myTracks[i].position)*percent_new_track_left) / (myTracks[i+1].starttime - pos);
                     
                     if($idle) { 
                         newBackground(i+1);
-                    } else {
+                    }
+                    if (($idle && i == 1) || !$idle) {
                         n = i - 1;
                         if (n == $current_track && percent_new_track_left > 0.99 && $no_rewind){
                             n = n + 1;
@@ -276,6 +301,8 @@ $(document).ready(function () {
     
     
     widget.bind(SC.Widget.Events.FINISH, function() {
+        $idle = false;
+        $finish = true;
         last = myTracks.length - 1
         if ($no_rewind) {
             $('.card'+ last +'.card_top .cardimage').addClass("faded");
@@ -294,10 +321,14 @@ $(document).ready(function () {
         if ($idle) {
             if(event.pageX != currentMousePos.x || event.pageY != currentMousePos.y) {
                 $idle = false;
+                $idle_start8 = false;
                 $("#log2").html("idle : <b>" + false + "</b> px");
-                $('#wrapperbody').css('pointer-events','all');
+                $('.card.card_top').css('pointer-events','all');
+                clearTimeout($idle_timeout_fade);
                 $('#wrapperbody').css('opacity','1');
                 $('#wrapperbody2').css('opacity','1');
+                currentMousePos.x = event.pageX;
+                currentMousePos.y = event.pageY;
             }
         } else {
             cx = Math.ceil($(window).width() / 2.0);
@@ -316,6 +347,7 @@ $(document).ready(function () {
             $('#basiclevel').css('-webkit-transform', 'rotate3d(' + tiltx + ', ' + tilty + ', 0, ' + degree + 'deg)');
             $('#basiclevel').css('transform', 'rotate3d(' + tiltx + ', ' + tilty + ', 0, ' + degree + 'deg)');
         }
+        
     });
 
     
@@ -331,19 +363,17 @@ $(document).ready(function () {
         $("#styling3dtransition").css("margin-top", $basicheight / -2);
         $("#styling3dtransition").css("margin-left", $basicwidth / -2);
         
-        speed_percent = $('#basiclevel').height() / 533;
-        if (speed_percent > 1){
-            $default_d_speed = 1 * speed_percent;
-            $default_d_speed_save = $default_d_speed;
-            $max_d_speed = 36 * speed_percent;
-            $d_breaks = 0.09 * speed_percent;
-        }
+        $speed_percent = $('#basiclevel').height() / 533;
+        $default_d_speed = 1 * $speed_percent;
+        $default_d_speed_save = $default_d_speed;
+        $max_d_speed = 36 * $speed_percent;
+        $d_breaks = 0.09 * $speed_percent;
         
         $empty_height = $("#wrapperbody").width() * 0.3;
         $(".emptycardspase").css("height",$empty_height);
         $empty_height = $(".emptycardspase").height();
         $wrapper_height = $("#wrapperbody").height();
-        $card_height = $("#wrapperbody").width() * 0.200343;
+        $card_height = $('.card1.card.card_bottom').height();
         $cardscr_offs = ($wrapper_height / -2) + ($card_height / 2);
         $scrollidlefix_height = $(".description").height() + parseInt($(".description").css("padding-top")) + parseInt($(".description").css("padding-bottom"));
         
@@ -370,18 +400,34 @@ $(document).ready(function () {
     
     $(document).idle({
       onIdle: function(){
-        $('#wrapperbody').css('pointer-events','none');
-        $('#wrapperbody').css('opacity','0');
-        $('#wrapperbody2').css('opacity','0');
-        setTimeout(function(){ 
-            $('#wrapperbody').css('opacity','1');
-            $('#wrapperbody2').css('opacity','1');
-            $idle = true;
-            $("#log2").html("idle : <b>" + true + "</b> px");
-        }, 2100);
-
-        $("#log").html("$onIdle : <b> RUN </b> px");
-          
+        if (!$finish && !$idle) {
+            $('.card.card_top').css('pointer-events','none');
+            $('#wrapperbody').css('opacity','0');
+            $('#wrapperbody2').css('opacity','0');
+            $idle_timeout_fade = setTimeout(function(){ 
+                $('#wrapperbody').css('opacity','1');
+                $('#wrapperbody2').css('opacity','1');
+                $idle = true;
+                $("#log2").html("idle : <b>" + true + "</b> px");
+            }, 2100);
+            $idle_move_x = currentMousePos.x;
+            $idle_move_y = currentMousePos.y;
+            
+            $ccx = Math.ceil($(window).width() / 2.0);
+            $ccy = Math.ceil($(window).height() / 2.0);
+            $("#log4").html("ccx : <b>" + $ccx + "</b> px ccy : <b>" + $ccy + "</b> px ");
+            var xx = Math.abs($idle_move_x - $ccx);
+            var yy = Math.abs($idle_move_y - $ccy);
+            if (xx < yy ) {
+                $idle_move_y_step = 2 * $speed_percent;
+                $idle_move_x_step = (xx / yy) * $idle_move_y_step;
+            } else {
+                $idle_move_x_step = 2 * $speed_percent;
+                $idle_move_y_step = (yy / xx) * $idle_move_x_step;
+            }
+            $idle_degree = Math.PI / 2;
+            $idle_degree_circle = 0; 
+        }
       },
       idle: 5000
     });
@@ -413,8 +459,50 @@ function repeatOften() {
     if($idle) {
         var scrollll = $arrow_pos - $scrollidlefix_height;
         $("#wrapperbody").scrollTop(scrollll);
-        $("#wrapperbody2").scrollTop(scrollll); // + $scrollidlefix_height
-//        $("#wrapperbody2").scrollTop($arrow_pos);
+        $("#wrapperbody2").scrollTop(scrollll);
+        
+        $("#log4").html("ccx : <b>" + $ccx + "</b> px ccy : <b>" + $ccy + "</b> px ");
+        
+        var ddx = 0;
+        var ddy = 0;
+        if (!$idle_start8) {
+            if ($idle_move_x < $ccx + (100*$speed_percent)){
+                $idle_move_x += $idle_move_x_step;
+                if ($idle_move_x >= $ccx){$idle_move_x = $ccx + (100*$speed_percent);}
+            }
+            if ($idle_move_x > $ccx + (100*$speed_percent)){
+                $idle_move_x -= $idle_move_x_step;
+                if ($idle_move_x <= $ccx){$idle_move_x = $ccx + (100*$speed_percent);}
+            }
+            if ($idle_move_y < $ccy){
+                $idle_move_y += $idle_move_y_step;
+                if ($idle_move_y >= $ccy){$idle_move_y = $ccy;}
+            }
+            if ($idle_move_y > $ccy){
+                $idle_move_y -= $idle_move_y_step;
+                if ($idle_move_y <= $ccy){$idle_move_y = $ccy;}
+            }
+            if ($idle_move_y == $ccy && $idle_move_x == $ccx + (100*$speed_percent)){
+                $idle_start8 = true;
+            }
+            $("#log3").html("$idle_move_x : <b>" + $idle_move_x + "</b> px $idle_move_y : <b>" + $idle_move_y + "</b> px ");
+            var ddx = $idle_move_x - $ccx;
+            var ddy = $idle_move_y - $ccy;
+        } else {
+            var ddx = (Math.cos($idle_degree)) * 400 * $speed_percent + Math.cos($idle_degree_circle)*(100*$speed_percent);
+            var ddy = (Math.sin(2*$idle_degree) / 2) * 400 * $speed_percent + Math.sin($idle_degree_circle)*(100*$speed_percent);
+            $("#log3").html("ddx : <b>" + ddx + "</b> px ddy : <b>" + ddy + "</b> px ");
+            $idle_degree += 0.003*$speed_percent;
+            $idle_degree_circle += 0.004*$speed_percent;
+        }
+
+        var tiltxx = (ddy / $ccy);
+        var tiltyy = -(ddx / $ccx);
+        var radiuss = Math.sqrt(Math.pow(tiltxx, 2) + Math.pow(tiltyy, 2));
+        var degreee = (radiuss * 20);
+
+        $('#basiclevel').css('-webkit-transform', 'rotate3d(' + tiltxx + ', ' + tiltyy + ', 0, ' + degreee + 'deg)');
+        $('#basiclevel').css('transform', 'rotate3d(' + tiltxx + ', ' + tiltyy + ', 0, ' + degreee + 'deg)');
     }
     
     requestAnimationFrame(repeatOften);
