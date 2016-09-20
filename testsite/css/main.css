@@ -322,12 +322,18 @@ section.order  {
 .symb {
     position: absolute;
     display: inline-block; 
-    font-size: 160px;
+    font-size: 140px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0px 30px 30px 30px;
-        
+    color:white;
+    filter:drop-shadow(0px 0px 8px white);
+/*    opacity: 0.95;*/
+}
+.symb.wrench {
+    font-size: 160px;
+    padding-bottom: 20px; 
 }
 .right_aside {
 	padding: 15px 15px;
