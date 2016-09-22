@@ -1,0 +1,11 @@
+@font-face {
+	font-family: 'PoseiAOE';
+	src: url('./PoseiAOE.eot');
+	src: local('PoseiAOE'), url('./PoseiAOE.woff') format('woff'), url('./PoseiAOE.ttf') format('truetype');
+}
+/* use this class to attach this font to any element i.e. <p class="fontsforweb_fontid_68373">Text with this font applied</p> */
+.fontsforweb_fontid_68373 {
+	font-family: 'PoseiAOE' !important;
+}
+
+/* Font downloaded from FontsForWeb.com */
