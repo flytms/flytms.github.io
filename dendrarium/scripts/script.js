@@ -3,6 +3,8 @@
 $set = 1;
 $changeinprogress = 1;
 $current_card = -1;
+$help_hover = 2;
+$scroll_revival_settimeout = 0;
 function newBackground(num_card) { 
     if (num_card == 0) {$changeinprogress = 0;}
     if ( $changeinprogress == 0 && $current_card != num_card) {
@@ -15,6 +17,7 @@ function newBackground(num_card) {
         }
         
         if (num_card > 0) {
+            
             wrH = $wrapper_height;
             cH = $card_height;
             cP = $scrollidlefix_height + ($card_height + $empty_height)*(num_card - 1);
@@ -32,6 +35,8 @@ function newBackground(num_card) {
                 }
 
             $('.out-dend-txt-hidescroll').removeClass('recover');
+            clearTimeout($scroll_revival_settimeout);
+            $('.help_scroll').css('opacity','0');
 
             $('#wrapperbody').css('pointer-events','none');
             $('.card'+$current_card+'.card_top .cardimage').addClass("faded");
@@ -56,6 +61,14 @@ function newBackground(num_card) {
         }
         
         if (num_card > 0) {
+            if ($help_hover > 1 ){
+                $('#wrapperbody3 .card'+$current_card+'.card_help .help_hover').remove();
+                $help_hover -= 1;
+            } else {
+                $('#wrapperbody3').remove();
+                $help_hover -= 1;
+            }
+            
             $('.card'+$current_card+' .cardimage').css('margin-left','67%');//70%
             if ( !$('.card'+$current_card+'.card_top .cardimage').hasClass("faded") ) {
                 $('.card'+$current_card+'.card_top .cardimage').css({'-webkit-filter':'invert(100%)','filter':'invert(100%)'});
@@ -132,9 +145,13 @@ function newBackground(num_card) {
                     $('.card'+$current_card+'.card_top .cardimage').addClass("faded");
                     $('.card'+$current_card+'.card_top .cardimage').css('margin-left','300%');
                     $finish_touch = false;
-                }
+                }        
                 $changeinprogress = 0;
             },4200);
+            $scroll_revival_settimeout = setTimeout(function(){ 
+                $('.help_scroll').css('opacity','1');
+                $('#wrapperbody3').css('opacity','1');
+            },8000);
         },1350);
     } else if ( $changeinprogress == 0 && $current_card == num_card) {
         $('.card'+$current_card+'.card_top .cardimage').addClass("faded");
@@ -203,15 +220,6 @@ $(document).ready(function () {
     $card_height = $("#wrapperbody").width() * 0.200343;
     $cardscr_offs = ($wrapper_height / -2) + ($card_height / 2);
     $scrollidlefix_height = $(".description").height() + parseInt($(".description").css("padding-top")) + parseInt($(".description").css("padding-bottom"));
-    
-        /////
-//    setTimeout(function(){ 
-//    $("#log3").append(" $card_height  : <b>" +  $card_height + "</b> px  $(.card1.card.card_bottom).height() : <b>" + $('.card1.card.card_bottom').height() + "</b> px");
-//    },2000);
-//    $("#log3").append("$empty_height : <b>" + $empty_height + "</b> px ");
-//    $("#log3").append("$card_height : <b>" + $card_height + "</b> px ");
-//    $("#log3").append(".card1.card.card_bot : <b>" + $('.card1.card.card_bottom').height() + "</b> px ");
-        //////
 
     
     $('#backplanebackground').toggleClass('animated');
@@ -220,6 +228,7 @@ $(document).ready(function () {
     var iframeElement   = document.querySelector('iframe');
     var widget         = SC.Widget(iframeElement);
     widget.bind(SC.Widget.Events.READY, function() {
+        if ($firstplay) { widget.play();}
         widget.bind(SC.Widget.Events.PLAY, function() {
             if ($firstplay) {
                 $("#skplayer iframe").css({"-webkit-filter":"brightness(420%) grayscale(100%) drop-shadow(0px 0px 1px #3A3A3A)","filter":"brightness(420%) grayscale(100%) drop-shadow(0px 0px 1px #3A3A3A)"});
@@ -251,15 +260,12 @@ $(document).ready(function () {
             $finish_touch = true;
             $("#playarrow").css("opacity","1");
             $default_d_speed = $default_d_speed_save;
-//            $("#log4").append("SCplayer : <b> PLAY </b> px $mix_time ON PLAY : <b>" + myTracks[myTracks.length - 1].starttime + "</b> ms ");
         });
     });
     
     
     widget.bind(SC.Widget.Events.PLAY_PROGRESS, function() {
         widget.getPosition(function(pos) {
-//            $("#log2").html("SCplayer position: <b>"+ position +"</b> ms");
-            $("#log").html("$no_rewind  : <b>" + $no_rewind  + "</b>");
             if(!$firstplay){
                 if (myTracks[$current_track].starttime < pos && myTracks[$current_track+1].starttime > pos && !$window_resized){
                     arrow_pos_old = $arrow_pos;
@@ -272,7 +278,6 @@ $(document).ready(function () {
                     while (i >= 0 && pos < myTracks[i].starttime) {
                         i = i - 1;
                     }
-//                    $("#log2").html("i: <b>"+ i +"</b> ms");
                     percent_new_track_left = (myTracks[i+1].starttime - pos)/(myTracks[i+1].starttime - myTracks[i].starttime);
                     $arrow_pos = myTracks[i].position + (myTracks[i+1].position - myTracks[i].position)*percent_new_track_left;
                     $arrow_step = ((myTracks[i+1].position - myTracks[i].position)*percent_new_track_left) / (myTracks[i+1].starttime - pos);
@@ -322,7 +327,6 @@ $(document).ready(function () {
             if(event.pageX != currentMousePos.x || event.pageY != currentMousePos.y) {
                 $idle = false;
                 $idle_start8 = false;
-                $("#log2").html("idle : <b>" + false + "</b> px");
                 $('.card.card_top').css('pointer-events','all');
                 clearTimeout($idle_timeout_fade);
                 $('#wrapperbody').css('opacity','1');
@@ -404,18 +408,18 @@ $(document).ready(function () {
             $('.card.card_top').css('pointer-events','none');
             $('#wrapperbody').css('opacity','0');
             $('#wrapperbody2').css('opacity','0');
+            $('#wrapperbody3').css('opacity','0');
             $idle_timeout_fade = setTimeout(function(){ 
                 $('#wrapperbody').css('opacity','1');
                 $('#wrapperbody2').css('opacity','1');
+                $('#wrapperbody3').css('opacity','1');
                 $idle = true;
-                $("#log2").html("idle : <b>" + true + "</b> px");
             }, 2100);
             $idle_move_x = currentMousePos.x;
             $idle_move_y = currentMousePos.y;
             
             $ccx = Math.ceil($(window).width() / 2.0);
             $ccy = Math.ceil($(window).height() / 2.0);
-            $("#log4").html("ccx : <b>" + $ccx + "</b> px ccy : <b>" + $ccy + "</b> px ");
             var xx = Math.abs($idle_move_x - $ccx);
             var yy = Math.abs($idle_move_y - $ccy);
             if (xx < yy ) {
@@ -429,9 +433,31 @@ $(document).ready(function () {
             $idle_degree_circle = 0; 
         }
       },
-      idle: 5000
+      idle: 12000
     });
 
+    var interval_scroll_help = setInterval(function() {
+        var $first_scrolled = $('#wrapperbody').scrollTop();
+        if ($first_scrolled > ($scrollidlefix_height + $empty_height)){
+//            $(".help_scroll").fadeOut(1200, function() { $(".help_scroll").remove(); });
+            $('.help_scroll').css('opacity','0');
+            setTimeout(function(){ 
+                $(".help_scroll").remove();
+                clearInterval(interval_scroll_help);
+            },3000);     
+        }
+    }, 2000);
+    
+    var interval_hover_help = setInterval(function() {
+        var $first_scrolled = $('#wrapperbody').scrollTop();
+        if ($first_scrolled > (($scrollidlefix_height + $empty_height)*4)){
+            $("#wrapperbody3").fadeOut(1200, function() { $("#wrapperbody3").remove(); });
+            clearInterval(interval_hover_help);
+        }
+        if($help_hover == 0) {
+            clearInterval(interval_hover_help);
+        }
+    }, 2000);
   
 });
 
@@ -452,7 +478,6 @@ function repeatOften() {
     }
     $d_pos += $d_speed;
     $(".dendrarium-txt").scrollTop($d_pos);
-//    $("#log3").html("d_speed : <b>" + $d_speed + "</b> px d_pos : <b>" + $d_pos + "</b> px");
     
     $("#playarrow").css("top",$arrow_pos); 
     
@@ -461,48 +486,47 @@ function repeatOften() {
         $("#wrapperbody").scrollTop(scrollll);
         $("#wrapperbody2").scrollTop(scrollll);
         
-        $("#log4").html("ccx : <b>" + $ccx + "</b> px ccy : <b>" + $ccy + "</b> px ");
-        
-        var ddx = 0;
-        var ddy = 0;
-        if (!$idle_start8) {
-            if ($idle_move_x < $ccx + (100*$speed_percent)){
-                $idle_move_x += $idle_move_x_step;
-                if ($idle_move_x >= $ccx){$idle_move_x = $ccx + (100*$speed_percent);}
+        if ($changeinprogress == 0){
+            
+            var ddx = 0;
+            var ddy = 0;
+            if (!$idle_start8) {
+                if ($idle_move_x < $ccx + (100*$speed_percent)){
+                    $idle_move_x += $idle_move_x_step;
+                    if ($idle_move_x >= $ccx){$idle_move_x = $ccx + (100*$speed_percent);}
+                }
+                if ($idle_move_x > $ccx + (100*$speed_percent)){
+                    $idle_move_x -= $idle_move_x_step;
+                    if ($idle_move_x <= $ccx){$idle_move_x = $ccx + (100*$speed_percent);}
+                }
+                if ($idle_move_y < $ccy){
+                    $idle_move_y += $idle_move_y_step;
+                    if ($idle_move_y >= $ccy){$idle_move_y = $ccy;}
+                }
+                if ($idle_move_y > $ccy){
+                    $idle_move_y -= $idle_move_y_step;
+                    if ($idle_move_y <= $ccy){$idle_move_y = $ccy;}
+                }
+                if ($idle_move_y == $ccy && $idle_move_x == $ccx + (100*$speed_percent)){
+                    $idle_start8 = true;
+                }
+                var ddx = $idle_move_x - $ccx;
+                var ddy = $idle_move_y - $ccy;
+            } else {
+                var ddx = (Math.cos($idle_degree)) * 400 * $speed_percent + Math.cos($idle_degree_circle)*(100*$speed_percent);
+                var ddy = (Math.sin(2*$idle_degree) / 2) * 400 * $speed_percent + Math.sin($idle_degree_circle)*(100*$speed_percent);
+                $idle_degree += 0.003*$speed_percent;
+                $idle_degree_circle += 0.004*$speed_percent;
             }
-            if ($idle_move_x > $ccx + (100*$speed_percent)){
-                $idle_move_x -= $idle_move_x_step;
-                if ($idle_move_x <= $ccx){$idle_move_x = $ccx + (100*$speed_percent);}
-            }
-            if ($idle_move_y < $ccy){
-                $idle_move_y += $idle_move_y_step;
-                if ($idle_move_y >= $ccy){$idle_move_y = $ccy;}
-            }
-            if ($idle_move_y > $ccy){
-                $idle_move_y -= $idle_move_y_step;
-                if ($idle_move_y <= $ccy){$idle_move_y = $ccy;}
-            }
-            if ($idle_move_y == $ccy && $idle_move_x == $ccx + (100*$speed_percent)){
-                $idle_start8 = true;
-            }
-            $("#log3").html("$idle_move_x : <b>" + $idle_move_x + "</b> px $idle_move_y : <b>" + $idle_move_y + "</b> px ");
-            var ddx = $idle_move_x - $ccx;
-            var ddy = $idle_move_y - $ccy;
-        } else {
-            var ddx = (Math.cos($idle_degree)) * 400 * $speed_percent + Math.cos($idle_degree_circle)*(100*$speed_percent);
-            var ddy = (Math.sin(2*$idle_degree) / 2) * 400 * $speed_percent + Math.sin($idle_degree_circle)*(100*$speed_percent);
-            $("#log3").html("ddx : <b>" + ddx + "</b> px ddy : <b>" + ddy + "</b> px ");
-            $idle_degree += 0.003*$speed_percent;
-            $idle_degree_circle += 0.004*$speed_percent;
+
+            var tiltxx = (ddy / $ccy);
+            var tiltyy = -(ddx / $ccx);
+            var radiuss = Math.sqrt(Math.pow(tiltxx, 2) + Math.pow(tiltyy, 2));
+            var degreee = (radiuss * 20);
+
+            $('#basiclevel').css('-webkit-transform', 'rotate3d(' + tiltxx + ', ' + tiltyy + ', 0, ' + degreee + 'deg)');
+            $('#basiclevel').css('transform', 'rotate3d(' + tiltxx + ', ' + tiltyy + ', 0, ' + degreee + 'deg)');    
         }
-
-        var tiltxx = (ddy / $ccy);
-        var tiltyy = -(ddx / $ccx);
-        var radiuss = Math.sqrt(Math.pow(tiltxx, 2) + Math.pow(tiltyy, 2));
-        var degreee = (radiuss * 20);
-
-        $('#basiclevel').css('-webkit-transform', 'rotate3d(' + tiltxx + ', ' + tiltyy + ', 0, ' + degreee + 'deg)');
-        $('#basiclevel').css('transform', 'rotate3d(' + tiltxx + ', ' + tiltyy + ', 0, ' + degreee + 'deg)');
     }
     
     requestAnimationFrame(repeatOften);
@@ -513,10 +537,8 @@ setInterval(function(){
     $d_to_end = $(".out-dend-txt-hidescroll.top-txt .dendrarium-txt span").height() - $(".out-dend-txt-hidescroll.top-txt .dendrarium-txt").scrollTop();
     if($d_to_end < 3000) {
         $('.dendrarium-txt span').append("DENDRARIUMDENDRARIUMDENDRARIUM");
-//        $("#log4").append("height : <b>" + $(".out-dend-txt-hidescroll.top-txt .dendrarium-txt span").height() + "</b> scrolltop : <b>" + $(".out-dend-txt-hidescroll.top-txt .dendrarium-txt").scrollTop() + "</b> add ");
     }
 }, 1000);
-
 
 
 
