@@ -82,7 +82,7 @@ body {
     padding-left: 70px;
 	text-align: left;
 }
-.position {
+.pos {
 	color: #fff;
 	display: block;
 	font-family: "RobotoLight", sans-serif;
@@ -295,9 +295,11 @@ section.order  {
 }
 .blog_item p {
 	margin-top: 0;
+    margin-left: 20px;
     padding-right:20px;
     padding-top: 30px;
     font-size: 18px;
+    line-height: 28px;
 }
 .blog_item p span {
     color:white;
@@ -306,7 +308,7 @@ section.order  {
     border-radius: 3px;
     padding: 0px 4px;
     filter:drop-shadow(0px 0px 1px #212121);
-    margin:0px 5px 0px 0px;
+    margin:0px 0px 0px 0px;
 }
 .blog_item p i {
 	color: #212121;
