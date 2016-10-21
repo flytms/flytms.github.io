@@ -161,8 +161,39 @@ function newBackground(num_card) {
 
 var myTracks = [
     {starttime: 0, position: 0 }, // first track
-    {starttime: 21951, position: 0 },
-    {starttime: 90312, position: 0 }, //last track
+    {starttime: 111000, position: 0 },
+    {starttime: 196000, position: 0 },
+    {starttime: 303000, position: 0 },
+    {starttime: 507000, position: 0 },
+    {starttime: 668000, position: 0 },
+    {starttime: 750000, position: 0 },
+    {starttime: 831000, position: 0 },
+    {starttime: 914000, position: 0 },
+    {starttime: 1088000, position: 0 }, //track 10 
+    {starttime: 1164000, position: 0 },
+    {starttime: 1303000, position: 0 },
+    {starttime: 1331000, position: 0 },
+    {starttime: 1412000, position: 0 },
+    {starttime: 1479000, position: 0 },
+    {starttime: 1598000, position: 0 },
+    {starttime: 1703000, position: 0 },
+    {starttime: 1735000, position: 0 },
+    {starttime: 1760000, position: 0 },
+    {starttime: 1846000, position: 0 }, //track 20
+    {starttime: 1945000, position: 0 },
+    {starttime: 2039000, position: 0 },
+    {starttime: 2201000, position: 0 },
+    {starttime: 2297000, position: 0 },
+    {starttime: 2412000, position: 0 },
+    {starttime: 2509000, position: 0 },
+    {starttime: 2566000, position: 0 },
+    {starttime: 2596000, position: 0 },
+    {starttime: 2695000, position: 0 },
+    {starttime: 2803000, position: 0 }, // track 30
+    {starttime: 2940000, position: 0 },
+    {starttime: 3137000, position: 0 },
+    {starttime: 3260000, position: 0 },
+    {starttime: 3369000, position: 0 },
     {starttime: 0, position: 0 } //end
 ];
 
@@ -202,6 +233,8 @@ $ccx = 0;
 $ccy = 0;
 $idle_degree = 0;
 $idle_degree_circle = 0;
+
+//$dend_idlescroll_pervention = false;
 
 var currentMousePos = { x: -1, y: -1 };
 $(document).ready(function () {
@@ -396,7 +429,9 @@ $(document).ready(function () {
         
         $scrollchange = $scrollbefore - $scrolltop;
         
-        $d_speed -= $scrollchange/80;
+//        if (!$dend_idlescroll_pervention) {
+            $d_speed -= $scrollchange/80;
+//        }
         
         $scrollbefore = $scrolltop;    
     });
@@ -431,6 +466,11 @@ $(document).ready(function () {
             }
             $idle_degree = Math.PI / 2;
             $idle_degree_circle = 0; 
+            
+//            $dend_idlescroll_pervention = true;
+//            setTimeout(function(){ 
+//                $dend_idlescroll_pervention = false;
+//            }, 500);
         }
       },
       idle: 12000
@@ -458,12 +498,63 @@ $(document).ready(function () {
             clearInterval(interval_hover_help);
         }
     }, 2000);
+    
+    var bLazy = new Blazy({ 
+        offset: 3000,
+        container: '.blazyscroll'
+    });
+    
+    function getBrowserInfo()
+    {
+        var ua = navigator.userAgent, tem,
+            M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+        if(/trident/i.test(M[1]))
+        {
+            tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+            return 'IE '+(tem[1] || '');
+        }
+        if(M[1]=== 'Chrome')
+        {
+            tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+            if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+        }
+        M = M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+        if((tem= ua.match(/version\/(\d+)/i))!= null)
+            M.splice(1, 1, tem[1]);
+        return M.join(' ');
+    }
+
+    var browserInfo = getBrowserInfo();
+    browserInfo = browserInfo.split(" ");
+
+    $(function () {
+        alert(browserInfo);
+        if(browserInfo[0] == 'Firefox' && browserInfo[1] < 27) {
+            alert("Firefox");
+        }
+//        if(browserInfo[0] == 'Chrome' && browserInfo[1] < 22) {
+//            alert("Chrome");
+//        }
+        if(browserInfo[0] == 'IE' && browserInfo[1] < 11) {
+            alert("IE");
+        }
+//        if(browserInfo[0] == 'Safari' && browserInfo[1] < 11) {
+//            alert("Safari");
+//        }
+//        if(browserInfo[0] == 'Opera' && browserInfo[1] < 14) {
+//            alert("Safari");
+//        }
+    });
+
   
 });
 
 function repeatOften() {
     if ($d_speed > $max_d_speed) {
         $d_speed = $max_d_speed;
+    }
+    if ($d_speed < (0 - $max_d_speed)) {
+        $d_speed = 0 - $max_d_speed;
     }
     if ($d_speed < $default_d_speed) {
         $d_speed += $d_breaks;
@@ -483,8 +574,12 @@ function repeatOften() {
     
     if($idle) {
         var scrollll = $arrow_pos - $scrollidlefix_height;
+        $dend_idlescroll_pervention = true;
         $("#wrapperbody").scrollTop(scrollll);
         $("#wrapperbody2").scrollTop(scrollll);
+        setTimeout(function(){ 
+            $dend_idlescroll_pervention = false;
+        }, 500);
         
         if ($changeinprogress == 0){
             
@@ -536,7 +631,7 @@ requestAnimationFrame(repeatOften);
 setInterval(function(){
     $d_to_end = $(".out-dend-txt-hidescroll.top-txt .dendrarium-txt span").height() - $(".out-dend-txt-hidescroll.top-txt .dendrarium-txt").scrollTop();
     if($d_to_end < 3000) {
-        $('.dendrarium-txt span').append("DENDRARIUMDENDRARIUMDENDRARIUM");
+        $('.dendrarium-txt span').append("DENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUMDENDRARIUM");
     }
 }, 1000);
 

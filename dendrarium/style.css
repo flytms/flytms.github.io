@@ -710,10 +710,10 @@ body {
     position:absolute;
     background: rgba(255,255,255,0.1);
     border: 1px solid rgba(255,255,255,0.6);
-    border-top-left-radius: 3.58vh 2.86vh; /*25px 20px*/
-    border-top-right-radius: 3.58vh 2.86vh; /*25px 20px*/
-    border-bottom-left-radius: 3.58vh 2.86vh; /*25px 20px*/
-    border-bottom-right-radius: 3.58vh 2.86vh; /*25px 20px*/
+    border-top-left-radius: 7.58vh 3.86vh; /*25px 20px*/
+    border-top-right-radius: 7.58vh 3.86vh; /*25px 20px*/
+    border-bottom-left-radius: 7.58vh 7.86vh; /*25px 20px*/
+    border-bottom-right-radius: 7.58vh 7.86vh; /*25px 20px*/
     height:11.44vh; /*80px*/
     width:auto;
     bottom:4.29vh; /*30px*/
@@ -721,7 +721,7 @@ body {
 /*    font-family: 'sans';*/
 /*    font-size: 18px;*/
     color:white;
-    padding:2.15vh 3.4vh; /*15px 23px*/
+    padding:2.25vh 3.5vh; /*15px 23px*/
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
