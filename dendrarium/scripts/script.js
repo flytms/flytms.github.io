@@ -530,13 +530,13 @@ $(document).ready(function () {
     $(function () {
 //        alert(browserInfo);
         if(browserInfo[0] == 'Firefox') {
-            alert("Unfortunately Soundcloud widget doesn't works in Firefox browser. Use Chrome or Opera for listening this mix.");
+            alert("Unfortunately Soundcloud widget doesn't work in Firefox browser. Use Chrome or Opera for listening this mix.");
         }
 //        if(browserInfo[0] == 'Chrome' && browserInfo[1] < 22) {
 //            alert("Chrome");
 //        }
-        if(browserInfo[0] == 'IE' && browserInfo[1] < 11) {
-            alert("IE");
+        if(browserInfo[0] == 'IE') {
+            alert("Use Chrome or Opera for better experience.");
         }
 //        if(browserInfo[0] == 'Safari' && browserInfo[1] < 11) {
 //            alert("Safari");
