@@ -528,9 +528,9 @@ $(document).ready(function () {
     browserInfo = browserInfo.split(" ");
 
     $(function () {
-        alert(browserInfo);
-        if(browserInfo[0] == 'Firefox' && browserInfo[1] < 27) {
-            alert("Firefox");
+//        alert(browserInfo);
+        if(browserInfo[0] == 'Firefox') {
+            alert("Unfortunately Soundcloud widget doesn't works in Firefox browser. Use Chrome or Opera for listening this mix.");
         }
 //        if(browserInfo[0] == 'Chrome' && browserInfo[1] < 22) {
 //            alert("Chrome");

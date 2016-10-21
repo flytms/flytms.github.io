@@ -582,24 +582,6 @@ body {
 */
 }
 
-.db {
-    position: absolute;
-    display: block;
-    width: 900px; /*60%*/
-    height: auto;
-    right: 0;
-    left: 0;
-    margin: auto;
-    bottom:0.5%;
-    font-size: 11px;
-    text-align: center;
-    color:white;
-    -webkit-filter: brightness(420%) grayscale(100%) drop-shadow(0px 0px 1px #3A3A3A);
-    filter: brightness(420%) grayscale(100%) drop-shadow(0px 0px 1px #3A3A3A);
-    
-    opacity:0;
-}
-
 .help_hover {
     position:absolute;
     background: rgba(255,255,255,0.3);
