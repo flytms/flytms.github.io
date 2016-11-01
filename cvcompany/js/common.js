@@ -208,7 +208,7 @@ $(document).ready(function() {
             'ru': 'Здравствуйте, «<span class="company"></span>», это резюме составлено и отправлено по вашему адресу выпускником КПИ Банделюком Игнатом с целью найти работу в области web-программирования. Что ещё я могу о себе перечислить:',
             'en': 'Greetings, «<span class="company"></span>», this CV  has been made and sent to your address by KPI graduate Bandeliuk Ignat with the goal to find a job in web-developing field. Some of my other qualities:',
             'ua': 'Вітаю, «<span class="company"></span>», це резюме було складено i вiдправлено за вашою адресою випускником КПI Банделюком Iгнатом з метою знайти роботу в областi web-програмування. Що ще я можу про себе додати:',
-        },
+        }, 
         'qualities': {
             'ru': '<li><a href="#">Сильная математическая база</a></li><li><a href="#">Понимание UI и UX</a></li><li><a href="#">Знание последних трендов</a></li><li><a href="#">Эстетическая восприимчивость</a></li><li><a href="#">Легко обучаем</a></li><li><a href="#">Желание развиваться</a></li><li><a href="#">Рациональный подход к задачам</a></li><li><a href="#">Неконфликтен</a></li><li><a href="#">Общителен</a></li><li><a href="#">Целеустремлён</a></li><li><a href="#">Проживаю в Киеве</a></li>',
             'en': '<li><a href="#">Strong mathematical base</a></li><li><a href="#">Understanding of UI & UX</a></li><li><a href="#">Knowledge of last trends</a></li><li><a href="#">Aesthetic sensitivity</a></li><li><a href="#">Easy learner</a></li><li><a href="#">Wish to improve</a></li><li><a href="#">Rational task solver</a></li><li><a href="#">Non-conflicting</a></li><li><a href="#">Sociable</a></li><li><a href="#">Purposeful</a></li><li><a href="#">Living in Kiyv</a></li>',
