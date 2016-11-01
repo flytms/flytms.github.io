@@ -122,6 +122,125 @@ $(document).ready(function() {
     }
     };
 
+    
+    var dictionary = {
+        'myname': {
+            'ru': 'Банделюк Игнат',
+            'en': 'Bandeliuk Ignat',
+            'ua': 'Банделюк Iгнат',
+        },
+        'position': {
+            'ru': 'Позиция',
+            'en': 'Position',
+            'ua': 'Позицiя',
+        },
+        'cv': {
+            'ru': 'Резюме',
+            'en': 'CV',
+            'ua': 'Peзюме',
+        },
+        'phone': {
+            'ru': 'Телефон ',
+            'en': 'Phone ',
+            'ua': 'Телефон ',
+        },
+        'mail': {
+            'ru': 'Почта ',
+            'en': 'Mail ',
+            'ua': 'Пошта ',
+        },
+        'skype': {
+            'ru': 'Скайп ',
+            'en': 'Skype ',
+            'ua': 'Скайп ',
+        },
+        'header_skills': {
+            'ru': 'профессиональные навыки',
+            'en': 'skills',
+            'ua': 'професiйнi навички',
+        },
+        'header_education': {
+            'ru': 'образование',
+            'en': 'education',
+            'ua': 'освiта',
+        },
+        'header_langs': {
+            'ru': 'языки',
+            'en': 'languages',
+            'ua': 'мови',
+        },
+        'header_langs': {
+            'ru': 'языки',
+            'en': 'languages',
+            'ua': 'мови',
+        },
+        'uni': {
+            'ru': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Национальный Технический Университет Украины <span>«Киевский Политехнический Институт»</span>',
+            'en': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  National Technical University of Ukraine  <br><span>«Kyiv Polytechnic Institute»</span>',
+            'ua': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Нацiональний Технiчний Унiверситет України <span>«Київський Полiтехнiчний Iнститут»</span>',
+        },
+        'spec': {
+            'ru': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<span>СПЕЦИАЛИСТ</span> по специальности ”СПЕЦИАЛИЗИРОВАННЫЕ КОМПЬЮТЕРНЫЕ СИСТЕМЫ” (ФПМ) ',
+            'en': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;obtained<span>SPECIALIST’S ACADEMIC LEVEL</span> field of study “SPECIALIZED COMPUTER SYSTEMS” (Faculty of Applied Mathematics)',
+            'ua': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<span>СПЕЦIАЛIСТ</span> за спецiальнiстю ”СПЕЦIАЛIЗОВАНI КОМП\'ЮТЕРНI СИСТЕМИ” (ФПМ) ',
+        },
+        'ended': {
+            'ru': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;окончил в <span>2016</span>',
+            'en': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;graduated in <span>2016</span>',
+            'ua': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;закiнчив у <span>2016</span>',
+        },
+        'eng': {
+            'ru': '<i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  <span>Английский (Upper Intermediate)</span>',
+            'en': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  <span>English (Upper Intermediate)</span>',
+            'ua': '<i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  <span>Англiйська (Upper Intermediate)</span>',
+        },
+        'rus': {
+            'ru': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Русский',
+            'en': '<i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Russian',
+            'ua': '<i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Росiйська',
+        },
+        'ukr': {
+            'ru': '<i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Украинский',
+            'en': '<i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Ukrainian',
+            'ua': '<i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Українська',
+        },
+        'greet': {
+            'ru': 'Здравствуйте, «<span class="company"></span>», это резюме составлено и отправлено по вашему адресу выпускником КПИ Банделюком Игнатом с целью найти работу в области web-программирования. Что ещё я могу о себе перечислить:',
+            'en': 'Greetings, «<span class="company"></span>», this CV  has been made and sent to your address by KPI graduate Bandeliuk Ignat with the goal to find a job in web-developing field. Some of my other qualities:',
+            'ua': 'Вітаю, «<span class="company"></span>», це резюме було складено i вiдправлено за вашою адресою випускником КПI Банделюком Iгнатом з метою знайти роботу в областi web-програмування. Що ще я можу про себе додати:',
+        },
+        'qualities': {
+            'ru': '<li><a href="#">Сильная математическая база</a></li><li><a href="#">Понимание UI и UX</a></li><li><a href="#">Знание последних трендов</a></li><li><a href="#">Эстетическая восприимчивость</a></li><li><a href="#">Легко обучаем</a></li><li><a href="#">Желание развиваться</a></li><li><a href="#">Рациональный подход к задачам</a></li><li><a href="#">Неконфликтен</a></li><li><a href="#">Общителен</a></li><li><a href="#">Целеустремлён</a></li><li><a href="#">Проживаю в Киеве</a></li>',
+            'en': '<li><a href="#">Strong mathematical base</a></li><li><a href="#">Understanding of UI & UX</a></li><li><a href="#">Knowledge of last trends</a></li><li><a href="#">Aesthetic sensitivity</a></li><li><a href="#">Easy learner</a></li><li><a href="#">Wish to improve</a></li><li><a href="#">Rational task solver</a></li><li><a href="#">Non-conflicting</a></li><li><a href="#">Sociable</a></li><li><a href="#">Purposeful</a></li><li><a href="#">Living in Kiyv</a></li>',
+            'ua': '<li><a href="#">Сильна математична база</a></li><li><a href="#">Розумiння UI та UX</a></li><li><a href="#">Знання останнiх трендiв</a></li><li><a href="#">Естетична сприйнятливість</a></li><li><a href="#">Легко вивчаю нове</a></li><li><a href="#">Бажання розвиватися</a></li><li><a href="#">Рацiональный пiдхiд до задач</a></li><li><a href="#">Неконфліктний</a></li><li><a href="#">Товариський</a></li><li><a href="#">Цілеспрямований</a></li><li><a href="#">Живу у Києві</a></li>',
+        }
+    };
+    var langs = ['ru', 'en', 'ua'];
+//    var current_lang_index = 0;
+//    var current_lang = langs[current_lang_index];
+    var current_lang = getUrlParameter('lang');
+    if (!(langs.indexOf(current_lang) >= 0)) {
+        current_lang = "ru";
+    }
+
+    window.change_lang = function(lang) {
+//        current_lang_index = ++current_lang_index % 3;
+//        current_lang = langs[current_lang_index];
+        current_lang = lang;
+        $(".langchose").removeClass("chosen");
+        $(".langchose."+current_lang).addClass("chosen");
+        translate(current_lang);
+        
+    }
+
+    function translate() {
+        $("[data-translate]").each(function(){
+            var key = $(this).data('translate');
+            $(this).html(dictionary[key][current_lang] || "N/A");
+        });
+    }
+
+    translate(current_lang);
     $("span.company").text(getUrlParameter('company'));
     $("span.position").text(getUrlParameter('position'));
 });

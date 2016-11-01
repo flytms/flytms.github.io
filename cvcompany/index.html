@@ -31,14 +31,19 @@
                     <div class="row">
                         <button class="auth_buttons hidden-md hidden-lg hidden-sm"><i class="fa fa-user" aria-hidden="true"></i></button>
                         <div class="top_links">
-                            <a href="#">Резюме</a> <i class="fa fa-angle-right" aria-hidden="true"></i> 
+                            <a href="#" data-translate="cv"></a> <i class="fa fa-angle-right" aria-hidden="true"></i> 
                             <a href="#"><span class="company">a</span> <i class="fa fa-industry" aria-hidden="true" style="font-size: 14px;"></i> </a>
                         </div>
                         <div class="soc_buttons">
-                            <a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-file-code-o" aria-hidden="true"></i></a>
+<!--                            <a href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>-->
+                            <span href="#" class="langchose ru chosen" onclick="change_lang('ru')">RU</span>
+                            /
+                            <span href="#" class="langchose en" onclick="change_lang('en')">EN</span>
+                            /
+                            <span href="#" class="langchose ua" onclick="change_lang('ua')">UA</span>
+<!--                            <a href="#"><i class="fa fa-file-code-o" aria-hidden="true"></i></a>-->
 <!--                            <a href="#"><i class="fa fa-reply" aria-hidden="true" ></i></a>-->
-                           <a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i></a>
+<!--                           <a href="#"><i class="fa fa-reply-all" aria-hidden="true"></i></a>-->
                         </div>
                     </div>
                 </div>
@@ -47,8 +52,8 @@
         <div class="container">
             <div class="col-md-12">
                 <div class="row">
-                    <a href="#" class="logo">Банделюк Игнат</a>
-                    <p class="pos">Позиция: <span class="position"></span></p>
+                    <a href="#" class="logo" data-translate="myname"></a>
+                    <p class="pos"><span data-translate="position"></span>: <span class="position"></span></p>
                     <nav class="main_mnu clearfix">
 <!--
                         <button class="main_mnu_button hidden-md hidden-lg hidden-sm"><i class="fa fa-bars" aria-hidden="true"></i></button>
@@ -62,19 +67,19 @@
 -->
 <!--                   <div class="c_cont">-->
                     <div class="contacts">
-                    <div class="c_line"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+                    <div class="c_line thin"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
                     <div class="c_line blured"></div>
-                    <p>Phone <i class="fa fa-mobile" aria-hidden="true"></i></p>
+                    <p><span data-translate="phone"></span><i class="fa fa-mobile" aria-hidden="true"></i></p>
                     <p> 0958076443</p></div>
                     <div class="contacts">
-                    <div class="c_line"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+                    <div class="c_line thin"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
                     <div class="c_line blured"></div>
-                    <p>Mail <i class="fa fa-envelope-o" aria-hidden="true"></i></p>
+                    <p><span data-translate="mail"></span><i class="fa fa-envelope-o" aria-hidden="true"></i></p>
                     <p> nate8v@yahoo.com</p></div>
                     <div class="contacts">
-                    <div class="c_line"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+                    <div class="c_line thin"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
                     <div class="c_line blured"></div>
-                    <p>Skype <i class="fa fa-skype" aria-hidden="true"></i></p>
+                    <p><span data-translate="skype"></span><i class="fa fa-skype" aria-hidden="true"></i></p>
                     <p> ignatx3</p></div>
                     </nav>
                   
@@ -90,7 +95,9 @@
                 <div class="blog_item">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><a href="#">профессиональные навыки</a></h3>
+                            <h3 class="border_captionpost" data-translate="header_skills"></h3>
+                            <h3 class="hidehalf_captionpost" data-translate="header_skills"></h3>
+                            <h3><a href="#" data-translate="header_skills"></a></h3>
                         </div>
                         
                         <div class="col-md-12">
@@ -114,7 +121,9 @@
                 <div class="blog_item">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><a href="#">образование</a></h3>
+                            <h3 class="border_captionpost" data-translate="header_education"></h3>
+                            <h3 class="hidehalf_captionpost" data-translate="header_education"></h3>
+                            <h3><a href="#" data-translate="header_education"></a></h3>
                         </div>
                         <div class="col-md-12">
                            <div class="circlesymbol">
@@ -126,9 +135,9 @@
                             <a href="#">
                                 <img src="./img/2.jpg" alt="" class="curve">
                             </a>
-                                <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Национальный Технический Университет Украины <span>«Киевский Политехнический Институт»</span></p>
-                                <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<span>СПЕЦИАЛИСТ</span> по специальности ”СПЕЦИАЛИЗИРОВАННЫЕ КОМПЬЮТЕРНЫЕ СИСТЕМЫ” (ФПМ) </p>
-                           <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;окончил в <span>2016</span></p>
+                                <p data-translate="uni"></p>
+                                <p data-translate="spec"></p>
+                           <p data-translate="ended"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;окончил в <span>2016</span></p>
                             
                             
                         </div>
@@ -137,7 +146,9 @@
                 <div class="blog_item">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3><a href="#">языки</a></h3>
+                           <h3 class="border_captionpost" data-translate="header_langs"></h3>
+                            <h3 class="hidehalf_captionpost" data-translate="header_langs"></h3>
+                            <h3><a href="#" data-translate="header_langs"></a></h3>
                         </div>
                         <div class="col-md-12">
                            <div class="circlesymbol">
@@ -149,9 +160,9 @@
                             <a href="#">
                                 <img src="./img/3.jpg" alt="" class="curve">
                             </a>
-                                <p><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  <span>Английский (Upper Intermediate)</span></p>
-<p><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Русский</p>
-<p><i class="fa fa-dot-circle-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;  Украинский</p>
+                                <p data-translate="eng"></p>
+                                <p data-translate="rus"></p>
+                                <p data-translate="ukr"></p>
                             
                             
                         </div>
@@ -163,32 +174,17 @@
 
             <aside class="right_aside">
                <img class ="portrait" src="img/webcam-toy-photo68.png"/>
-               <p>Здравствуйте, «<span class="company"></span>», это резюме составлено и отправлено по вашему адресу выпускником КПИ Банделюком Игнатом с целью найти работу в области web-программирования. Что ещё я могу о себе перечислить:</p>
-                <ul>
-                    <li><a href="#">Сильная математическая база</a></li>
-                    <li><a href="#">Понимание UI и UX</a></li>
-                    <li><a href="#">Знание последних трендов</a></li>
-                    <li><a href="#">Эстетическая восприимчивость</a></li>
-                    <li><a href="#">Легко обучаем</a></li>
-                    <li><a href="#">Желание развиваться</a></li>
-                    <li><a href="#">Рациональный подход к задачам</a></li>
-                    <li><a href="#">Неконфликтен</a></li>
-                    <li><a href="#">Общителен</a></li>
-                    <li><a href="#">Целеустремлён</a></li>
-                    <li><a href="#">Проживаю в Киеве</a></li>
+               <p data-translate="greet"></p>
+                <ul data-translate="qualities">
+
                 </ul>
             </aside>
         </div>
         </div>
     </section>
-    <div class="hidden">
-        <form id="callback" class="pop_form">
-            <h3>Order callback</h3>
-            <input type="text" name="name" placeholder="Your name..." required/>
-            <input type="text" name="phone" placeholder="Your phone..." required/>
-            <button class="button" type="submit">Order</button>
-        </form>
-    </div>
+    <footer class="bottom_footer">  
+    
+    </footer>
     <!--[if lt IE 9]>
 	<script src="libs/html5shiv/es5-shim.min.js"></script>
 	<script src="libs/html5shiv/html5shiv.min.js"></script>

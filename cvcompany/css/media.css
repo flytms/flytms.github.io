@@ -16,7 +16,17 @@
 	.self_desc {
 		text-align: center;
 	}
-
+    .blog_item h3.border_captionpost {
+        box-shadow: 0 1px 0 0 transparent, 0 0 0 1px transparent;
+        border: 1px solid transparent;
+    }
+    
+    .symb {
+    font-size: 13vw;
+    }
+    .symb.wrench {
+    font-size: 15vw;
+    }
 	
 }
 
@@ -60,7 +70,7 @@
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
 
-}
+} 
 
 /* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
@@ -79,7 +89,17 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
-	
+	.blog_item h3.border_captionpost {
+        box-shadow: 0 1px 0 0 #bac3c1, 0 0 0 1px #cdd6d4;
+        border: 1px solid rgb(239, 239, 239);
+    }
+    
+    .symb {
+    font-size: 10vw;
+    }
+    .symb.wrench {
+    font-size: 11.5vw;
+    }
 }
 
 /* Large Devices, Wide Screens */
