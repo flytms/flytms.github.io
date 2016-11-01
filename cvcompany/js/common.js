@@ -226,10 +226,9 @@ $(document).ready(function() {
     window.change_lang = function(lang) {
 //        current_lang_index = ++current_lang_index % 3;
 //        current_lang = langs[current_lang_index];
-        current_lang = lang;
         $(".langchose").removeClass("chosen");
-        $(".langchose."+current_lang).addClass("chosen");
-        translate(current_lang);
+        $(".langchose."+lang).addClass("chosen");
+        translate(lang);
         
     }
 
