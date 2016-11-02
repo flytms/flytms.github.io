@@ -224,12 +224,10 @@ $(document).ready(function() {
     }
 
     window.change_lang = function(lang) {
-//        current_lang_index = ++current_lang_index % 3;
-//        current_lang = langs[current_lang_index];
+        current_lang = lang;
         $(".langchose").removeClass("chosen");
-        $(".langchose."+lang).addClass("chosen");
-        translate(lang);
-        
+        $(".langchose."+current_lang).addClass("chosen");
+        translate(current_lang);   
     }
 
     function translate() {
@@ -237,8 +235,9 @@ $(document).ready(function() {
             var key = $(this).data('translate');
             $(this).html(dictionary[key][current_lang] || "N/A");
         });
+        $("span.company").text(getUrlParameter('company'));
     }
-
+    
     translate(current_lang);
     $("span.company").text(getUrlParameter('company'));
     $("span.position").text(getUrlParameter('position'));
