@@ -227,7 +227,7 @@ $(document).ready(function() {
         current_lang = lang;
         $(".langchose").removeClass("chosen");
         $(".langchose."+current_lang).addClass("chosen");
-        translate(current_lang);   
+        translate();   
     }
 
     function translate() {
@@ -238,7 +238,7 @@ $(document).ready(function() {
         $("span.company").text(getUrlParameter('company'));
     }
     
-    translate(current_lang);
+    change_lang(current_lang);
     $("span.company").text(getUrlParameter('company'));
     $("span.position").text(getUrlParameter('position'));
 });
